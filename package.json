@@ -1,0 +1,29 @@
+{
+  "name": "time-descriptor",
+  "version": "1.0.0",
+  "description": "Describe time in human readable words.",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "exports": {
+    "require": "./dist/index.cjs.js",
+    "import": "./dist/index.esm.js"
+  },
+  "repository": "https://github.com/Scribblerockerz/time-descriptor",
+  "author": "Johannes Schröder <contact@scribblerockerz.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn run build:esm && yarn run build:cjs",
+    "build:esm": "esbuild src/index.js --bundle --format=esm --platform=neutral --outfile=dist/index.esm.js",
+    "build:cjs": "esbuild src/index.js --bundle --format=cjs --platform=node --outfile=dist/index.cjs.js",
+    "test": "jest tests/"
+  },
+  "devDependencies": {
+    "esbuild": "^0.11.3",
+    "esbuild-jest": "^0.5.0",
+    "jest": "^26.6.3"
+  },
+  "files": [
+    "dist/index.cjs.js",
+    "dist/index.esm.js"
+  ]
+}

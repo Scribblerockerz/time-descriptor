@@ -61,6 +61,7 @@ describe("time", () => {
   it("should convert ms to days", () => {
     expect(inDays(0.5 * DAYS)).toBe((12 * HOURS) / 1000 / 60 / 60 / 24);
     expect(inDays(2 * DAYS)).toBe((48 * HOURS) / 1000 / 60 / 60 / 24);
+    expect(inDays(5 * DAYS + 3 * HOURS)).toBe(5.125);
   });
 
   it("should convert ms to weeks", () => {

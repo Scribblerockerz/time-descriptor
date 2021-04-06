@@ -1,22 +1,57 @@
 # time-descriptor
 
-Describe time in human readable words.
+This package is ment to better visualize relative time declarations.
 
 ```js
-import { MINUTES, SECONDS, inDays } from "../src/time";
+import { MINUTES, SECONDS, inDays } from "time-descriptor";
 
+const start = Date.now();
 setInterval(() => {
-  /* perform action */
+  // Days running
+  console.log(inDays(Date.now() - start));
 }, 3 * MINUTES + 25 * SECONDS);
 ```
 
-Convert ms back to days
+## Setup
+
+Get the package from npm and add it to your package.json.
 
 ```js
-const ms = 5 * 24 * 60 * 60 * 1000 + 3 * 60 * 60 * 1000;
-console.log("Milliseconds in days", inDays(ms));
-// vs
-console.log("Milliseconds in days", inDays(442800000)); // 5 days 3 hours
-// vs
-console.log("Milliseconds in days", inDays(5 * DAYS + 3 * HOURS));
+yarn add time-descriptor
 ```
+
+or if you preferr the npm way
+
+```js
+npm install --save time-descriptor
+```
+
+## Usecases
+
+This package handles relative time. It is _not_ meant to be a replacement for [date-fns](https://date-fns.org/). I highly recommend to use date-fns, if you have complex calculations.
+
+### Relative time declaration
+
+```js
+// Add 15 minutes to current timestamp
+Date.now() + 15 * MINUTES;
+```
+
+### Very specific time declaration
+
+```js
+// 5 * 24 * 60 * 60 * 1000 + 3 * 60 * 60 * 1000 + 12 * 60 * 1000
+5 * DAYS + 3 * HOURS + 12 SECONDS
+```
+
+### Conversion to decimal numbers
+
+```js
+// 442800000 ms = 5.125 days
+inDays(5 * DAYS + 3 * HOURS);
+```
+
+## Additions
+
+- This package package supports up to weeks, since everything beyond requires context, and I haven't found a smart solution for:  
+  **Example**: `1 * MONTH` wich is `<= 31 && >= 28`

@@ -6,9 +6,9 @@ This package is ment to better visualize relative time declarations.
 import { MINUTES, SECONDS, inDays } from "time-descriptor";
 
 const start = Date.now();
+
 setInterval(() => {
-  // Days running
-  console.log(inDays(Date.now() - start));
+  console.log("Days running", inDays(Date.now() - start));
 }, 3 * MINUTES + 25 * SECONDS);
 ```
 
@@ -16,13 +16,13 @@ setInterval(() => {
 
 Get the package from npm and add it to your package.json.
 
-```js
+```sh
 yarn add time-descriptor
 ```
 
 or if you preferr the npm way
 
-```js
+```sh
 npm install --save time-descriptor
 ```
 
@@ -53,5 +53,5 @@ inDays(5 * DAYS + 3 * HOURS);
 
 ## Additions
 
-- This package package supports up to weeks, since everything beyond requires context, and I haven't found a smart solution for:  
-  **Example**: `1 * MONTH` wich is `<= 31 && >= 28`
+- This package supports up to weeks, since everything beyond requires context, and I haven't found a smart solution for:  
+  **Example**: `1 * MONTH` wich is `<= 31 && >= 28` depending on the subject.
